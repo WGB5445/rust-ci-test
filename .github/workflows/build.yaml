@@ -16,9 +16,14 @@ jobs:
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       -
-        name: Check Arch
-        run: arch
+        name: build
+        run : docker build --platform linux/arm64 -t ARM-CI -f ./docker/Dockerfile .
       -
-        name: Run
-        run : docker build --platform linux/arm64 -f ./docker/Dockerfile .
-
+        name: Run docker
+        run : docker run -d --name ARM-Container ARM-CI
+      -
+        name: Copy
+        run : docker cp ARM-Container:/usr/bin/ci-test ./
+      -
+        name: Test
+        run: ./ci-test
