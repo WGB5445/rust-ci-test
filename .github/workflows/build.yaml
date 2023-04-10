@@ -20,7 +20,7 @@ jobs:
         run : docker build --platform linux/arm64 -t arm-ci -f ./docker/Dockerfile .
       -
         name: Run docker
-        run : docker run --platform=linux/arm64 -d --name arm-container arm-ci
+        run : docker run --platform linux/arm64 -d --name arm-container arm-ci
       -
         name: Copy
         run : docker cp arm-container:/usr/bin/ci-test ./
