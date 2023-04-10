@@ -16,6 +16,9 @@ jobs:
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       -
+        name: Check Arch
+        run: arch
+      -
         name: Run
         run : docker build --platform linux/arm64 -f ./docker/Dockerfile .
 
