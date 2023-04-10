@@ -17,13 +17,13 @@ jobs:
         uses: docker/setup-qemu-action@v2
       -
         name: build
-        run : docker build --platform linux/arm64 -t ARM-CI -f ./docker/Dockerfile .
+        run : docker build --platform linux/arm64 -t arm-ci -f ./docker/Dockerfile .
       -
         name: Run docker
-        run : docker run -d --name ARM-Container ARM-CI
+        run : docker run -d --name arm-container arm-ci
       -
         name: Copy
-        run : docker cp ARM-Container:/usr/bin/ci-test ./
+        run : docker cp arm-container:/usr/bin/ci-test ./
       -
         name: Test
         run: ./ci-test
