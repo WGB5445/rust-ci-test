@@ -17,5 +17,5 @@ jobs:
         uses: docker/setup-qemu-action@v2
       -
         name: Run
-        run : docker build -f ./docker/Dockerfile .
+        run : docker build --platform linux/arm64 -f ./docker/Dockerfile .
 
